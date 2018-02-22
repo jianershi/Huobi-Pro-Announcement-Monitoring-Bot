@@ -6,7 +6,7 @@ from config import channel_name
 # import html2text
 
 #setup
-announce_base_url = 'https://www.huobi.com/p/api/contents/pro/list_notice?&limit=10&language=zh-cn'
+announce_base_url = 'https://www.huobi.com/p/api/contents/pro/list_notice?&limit=1&language=zh-cn'
 announcement_content_base_url = 'https://www.huobi.com/p/api/contents/pro/notice/'
 webpage_link_base_url = 'https://www.huobi.pro/zh-cn/notice_detail/?id='
 announcement_list = []
@@ -54,7 +54,10 @@ def send_announcement(title,abstract,msg, link):
 
 def main():
 	while(1):
-		pull_announcement()
+		try:
+			pull_announcement()
+		except:
+			print ("pulling error overall")
 		time.sleep(30)
 
 main()
